@@ -1,12 +1,12 @@
 // Canvas
 const { body } = document;
 const canvas = document.createElement('canvas')
-const context = canvas.getContext('2d')
+const context = canvas.getContext('2d');
 
-const width = 500;
 const height = 600;
-const screenWidth = window.screen.width;
-const canvasPosition = screenWidth / 2 - width/2 ;
+let  width =  body.clientWidth*0.8;
+let screenWidth = body.clientWidth;
+const canvasPosition = screenWidth / 2 - width/2;
 const isMobile = window.matchMedia('(max-width: 600px)');
 const gameOverEl = document.createElement('div');
 
@@ -14,13 +14,13 @@ const gameOverEl = document.createElement('div');
 const paddleHeight = 10;
 const paddleWidth = 50;
 const paddleDiff = 25;
-let paddleBottomX = 225;
-let paddleTopX = 225;
+let paddleBottomX = width/2;
+let paddleTopX = width/2;
 let playerMoved = false;
 let paddleContact = false;
 
 // Ball
-let ballX = 250;
+let ballX = width/2;
 let ballY = 300;
 const ballRadius = 5;
 
@@ -50,6 +50,7 @@ let isNewGame = true;
 
 // Render Everything on Canvas
 function renderCanvas() {
+  
   // Canvas Background
   context.fillStyle = 'black';
   context.fillRect(0, 0, width, height);
@@ -67,7 +68,7 @@ function renderCanvas() {
   context.beginPath();
   context.setLineDash([4]);
   context.moveTo(0, 300);
-  context.lineTo(500, 300);
+  context.lineTo(width, 300);
   context.strokeStyle = 'grey';
   context.stroke();
 
@@ -85,12 +86,13 @@ function renderCanvas() {
 
 // Create Canvas Element
 function createCanvas() {
+  
   canvas.width = width;
   canvas.height = height;
   body.appendChild(canvas);
   renderCanvas();
-}
 
+}
 
 
 // Reset Ball to Center
