@@ -10,7 +10,6 @@ canvas {
   margin-top: 25px;
   z-index: 10;
   display: block;
-  border: 1px solid #f80b0b;
   height: auto;
 }
 
